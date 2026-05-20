@@ -70,6 +70,9 @@ import java.util.Scanner;
 // Importamos los menús que luego deberán completarse.
 import com.techlab.articulo.menu.MenuArticulos;
 import com.techlab.articulo.menu.MenuCategorias;
+import com.techlab.articulo.model.Articulo;
+import com.techlab.articulo.model.Categoria;
+import com.techlab.articulo.repository.Repositorio;
 
 public class App {
 
@@ -105,13 +108,45 @@ public class App {
 
         // TODO:
         // Crear aquí los repositorios genéricos.
+        Repositorio<Articulo> repositorioArticulo = new Repositorio<>();
+        Repositorio<Categoria> repositorioCategoria = new Repositorio<>();
 
         // TODO:
         // Crear aquí los menús y pasarles lo que necesiten por constructor.
+        MenuCategorias menuCategorias = new MenuCategorias(scanner, repositorioCategoria, repositorioArticulo);
+        MenuArticulos menuArticulos = new MenuArticulos(scanner, repositorioArticulo, repositorioCategoria);
 
         // TODO:
         // Implementar el menú principal de la aplicación.
+        String opcion;
+        do {
+        mostrarMenuPrincipal();
+        System.out.print("Ingrese una opcion: ");
+
+        opcion = scanner.nextLine();
+        switch (opcion) {
+                case "1":
+                    menuArticulos.ejecutar();
+                    break;
+                case "2":
+                    menuCategorias.ejecutar();
+                    break;               
+                case "0":
+                    System.out.println("Volviendo al menú principal.");
+                    return;
+                default:
+                    System.out.println("Opción incorrecta, intentar nuevamente.");
+                    break;
+            }
+        } while (opcion != "0");
 
         scanner.close();
+    }
+
+    private static void mostrarMenuPrincipal() {
+        System.out.println("\n--- MENÚ CATEGORÍAS ---");
+        System.out.println("1 - Menú Artículos");
+        System.out.println("2 - Menú Categorías");
+        System.out.println("0 - Salir");
     }
 }

@@ -2,8 +2,10 @@ package com.techlab.articulo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.techlab.articulo.interfaces.Identificable;
+import com.techlab.articulo.model.Categoria;
 
 /**
  * CONSIGNA DE ESTA CLASE
@@ -46,19 +48,37 @@ public class Repositorio<T extends Identificable> {
 
     // TODO:
     // Implementar método agregar.
-    public void addItem(T item) {
-        
+    public void agregar(T item) {
+        lista.add(item);
     }
+
+   
 
     // TODO:
     // Implementar método listar.
+    public List<T> listar() {
+        return lista;
+    }
 
     // TODO:
     // Implementar método buscarPorCodigo.
+        public T buscarPorCodigo(int codigo) {
+        return lista.stream()
+            .filter(item -> item.getCodigo() == codigo)
+            .findFirst()
+            .orElse(null);
+    }
+
 
     // TODO:
     // Implementar método eliminar.
+    public void eliminar(T item) {
+        lista.remove(item);
+    }
 
     // TODO:
     // Implementar método estaVacio.
+    public boolean estaVacio() {
+        return lista.isEmpty();
+    }
 }

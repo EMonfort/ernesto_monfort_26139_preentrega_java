@@ -51,6 +51,18 @@ public class ArticuloElectronico extends Articulo {
     public double calcularPrecioFinal() {
         // TODO:
         // Implementar lógica propia del artículo electrónico.
-        return 0;
+        if (garantiaMeses > 12) {
+            return precio * 1.1;
+        }
+        return precio;
+    }
+
+    public void setGarantiaMeses(int garantiaMeses) {
+        this.garantiaMeses = garantiaMeses;
+    }
+
+    @Override
+    public String getDetalleEspecifico() {
+        return "Garantía en meses: " + garantiaMeses;
     }
 }

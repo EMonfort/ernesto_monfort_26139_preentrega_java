@@ -30,13 +30,21 @@ public final class Secuencias {
 
     // TODO:
     // Crear atributos static para llevar la secuencia.
+    private static int codigoCategoria = 1;
+    private static int codigoArticulo = 1;
 
     private Secuencias() {
     }
 
     // TODO:
     // Implementar generarCodigoArticulo()
+    public static int generarCodigoArticulo() {
+        return codigoArticulo++;
+    }
 
     // TODO:
     // Implementar generarCodigoCategoria()
+    public static int generarCodigoCategoria() {
+        return codigoCategoria++;
+    }
 }

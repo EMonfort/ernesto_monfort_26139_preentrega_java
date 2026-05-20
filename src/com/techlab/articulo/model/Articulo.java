@@ -42,7 +42,7 @@ import com.techlab.articulo.interfaces.Identificable;
  * por ejemplo:
  * - String getDetalleEspecifico();
  */
-public abstract class Articulo implements Calculable, Identificable {
+public abstract class Articulo implements Identificable, Calculable {
 
     protected int codigo;
     protected String nombre;
@@ -94,12 +94,18 @@ public abstract class Articulo implements Calculable, Identificable {
 
     public abstract String getTipoArticulo();
 
+    public abstract String getDetalleEspecifico();
+
     @Override
     public String toString() {
-        // TODO:
-        // Mostrar todos los datos comunes del artículo.
-        // Sugerencia:
-        // incluir también tipo y precio final.
-        return "";
+        return "Artículo {" +
+                "código=" + codigo +
+                ", nombre='" + nombre + '\'' +
+                ", precio base=" + precio +
+                ", categoría='" + categoria.getNombre() + '\'' +
+                ", tipo='" + getTipoArticulo() + '\'' +
+                ", detalle='" + getDetalleEspecifico() + '\'' +
+                ", precio final=" + calcularPrecioFinal() +
+                '}';
     }
 }

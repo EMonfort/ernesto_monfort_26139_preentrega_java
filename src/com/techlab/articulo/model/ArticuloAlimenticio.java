@@ -53,4 +53,15 @@ public class ArticuloAlimenticio extends Articulo {
         }
         return precio;
     }
+
+    public void setDiasParaVencimiento(int diasParaVencimiento) {
+        this.diasParaVencimiento = diasParaVencimiento;
+    }
+
+    @Override
+    public String getDetalleEspecifico() {
+        return "Días para el vencimiento: " + diasParaVencimiento;
+    }
+
+
 }
